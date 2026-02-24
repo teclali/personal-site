@@ -1,17 +1,38 @@
 ---
-
+import "../styles/global.css";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body class="bg-bg">
+        <span
+            class="material-symbols-outlined rounded-xl border border-border bg-surface px-3 py-2 text-fg text-sm
+                   hover:border-[color-mix(in_oklab,var(--c-border)_80%,var(--c-primary))]
+                   focus:outline-none focus:ring-2 focus:ring-ring"
+            >dark_mode</span
+        >
+        <h1 class="text-primary text-6xl font-hero -mb-4 p-0">Casey Strong,</h1>
+        <h1 class="text-muted text-6xl font-hero m-0 p-0">Software Engineer</h1>
+        <p class="text-fg">
+            I write software that makes the world better. If you think I can do
+            that with you, I'd love to hear about it
+        </p>
+    </body>
 </html>

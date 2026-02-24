@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* --------- LIGHT THEME (default) --------- */
+:root {
+    /* Your original picks */
+    --c-bg: #edcd97; /* background */
+    --c-primary: #192e61; /* primary accent */
+    --c-secondary: #ab4f21; /* secondary accent */
+
+    /* Suggested supporting tokens */
+    --c-fg: #1f1b16; /* readable warm near-black */
+    --c-muted: #3a332c; /* muted text */
+    --c-surface: #f6e2bf; /* cards, nav backgrounds */
+    --c-border: #d8b77f; /* borders/dividers */
+
+    /* Contrast colors when using filled buttons */
+    --c-primary-contrast: #ffffff;
+    --c-secondary-contrast: #ffffff;
+
+    /* Focus ring */
+    --c-ring: color-mix(in oklab, var(--c-primary) 55%, white);
+
+    /* Optional: A/B test tweaks */
+    /* --c-bg: #f1d6a8; */
+}
+
+/* --------- DARK THEME (activated by .dark on <html>) --------- */
+.dark {
+    /* Your original picks */
+    --c-bg: #2b2117;
+    --c-primary: #4d6ccf;
+    --c-secondary: #d8743a;
+
+    /* Supporting tokens */
+    --c-fg: #f3f0ea; /* very light warm gray */
+    --c-muted: #d2c8bd; /* muted text */
+    --c-surface: #35281d; /* raised surfaces */
+    --c-border: #4a3729; /* borders/dividers */
+
+    --c-primary-contrast: #0b1022;
+    --c-secondary-contrast: #1a0f08;
+
+    --c-ring: color-mix(in oklab, var(--c-primary) 70%, white);
+
+    /* Optional: A/B test tweaks */
+    /* --c-bg: #241b13; */
+    /* --c-primary: #5e7be0; */
+}
+
+@theme {
+    --font-hero: "Jersey 10", sans-serif;
+    /* Semantic tokens */
+    --color-bg: var(--c-bg);
+    --color-fg: var(--c-fg);
+    --color-muted: var(--c-muted);
+    --color-surface: var(--c-surface);
+    --color-border: var(--c-border);
+    --color-primary: var(--c-primary);
+    --color-secondary: var(--c-secondary);
+    /* Useful optional tokens */
+    /* "primary-contrast": "var(--c-primary-contrast)", */
+    /* "secondary-contrast": "var(--c-secondary-contrast)", */
+    --color-ring: var(--c-ring);
+}
