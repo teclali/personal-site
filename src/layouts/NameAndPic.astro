@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/Casey_Strong_portrait.jpeg';
+import BasePage from './BasePage.astro';
+---
+<BasePage>
+  <main class="grid grid-cols-1 gap-4 px-6 py-8 md:grid-cols-3 max-w-2xl m-auto mt-16">
+    <div class="flex justify-center">
+      <Image src={portrait} width="200" alt="Portrait of Casey Strong" class="rounded-lg"></Image>
+    </div>
+    <div class="h-full justify-center col-span-2 text-center md:text-left">
+      <h2 class="text-5xl text-gray-700 font-medium text-nowrap mb-8 mt-4">Casey Strong</h2>
+      <slot />
+    </div>
+  </main>
+</BasePage>
