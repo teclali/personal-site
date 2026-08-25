@@ -1,0 +1,19 @@
+---
+import BasePage from "../BasePage.astro";
+const { frontmatter } = Astro.props;
+const datePublished = new Date(frontmatter.date_published);
+const formattedDate = datePublished.toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+})
+---
+<BasePage>
+  <div class="max-w-xl mx-auto px-8 mb-8">
+    <h1 class="mb-4 mt-10 md:mt-24 text-4xl font-bold">{frontmatter.title}</h1>
+    <time class="" datetime={frontmatter.date_published}>{formattedDate}</time>
+  </div>
+  <main class="max-w-xl px-8 m-auto *:mb-8 text-xl">
+    <slot />
+  </main>
+</BasePage>

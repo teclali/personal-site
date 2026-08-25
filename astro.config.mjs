@@ -8,9 +8,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   redirects: {
-    '/about': {
+    '/': {
       status: 302,
-      destination: '/'
+      destination: '/about'
     }
   }
 });

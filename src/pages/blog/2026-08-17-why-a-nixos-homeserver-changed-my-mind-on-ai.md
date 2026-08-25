@@ -1,6 +1,5 @@
 ---
 title: How a NixOs home server changed my mind on AI
-author: Astro Learner
 description: "After learning some Astro, I couldn't stop!"
 image:
     url: "https://docs.astro.build/assets/arc.webp"
