@@ -1,0 +1,9 @@
+---
+const { currentLocale } = Astro;
+const target = `/${currentLocale}`;
+---
+<html lang="en">
+    <head>
+        <meta http-equiv="refresh" content={`0; url=${target}`} />
+    </head>
+</html>
