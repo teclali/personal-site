@@ -1,10 +1,12 @@
 
 ---
 import NameAndPic from "@/layouts/NameAndPic.astro"
+import HomeParagraph from "@/components/HomeParagraph.astro";
 ---
 <NameAndPic>
-  <p class="mb-4">I am driven to making the world a better place for <em>everyone</em> by providing them the foundation they can build off of. I currently do that by writing great software for organizations with missions that matter.</p>
-  <p class="mb-4">
+  <HomeParagraph>I am driven to making the world a better place for <em>everyone</em> by providing them the foundation they can build off of. I currently do that by writing great software for organizations with missions that matter.</HomeParagraph>
+  <HomeParagraph>I find success by seeking to deeply understand the domain I'm in from the experts and leverage that knowledge to build systems that reflect reality.</HomeParagraph>
+  <HomeParagraph>
     If you'd like to talk to me feel free to send me a message on
     <a
       target="_blank"
@@ -12,6 +14,8 @@ import NameAndPic from "@/layouts/NameAndPic.astro"
       href="https://www.linkedin.com/in/casey-strong-2ba95b193/"
       class="ml-1 underline"
     >LinkedIn</a>
-  </p>
-  <a href="/resume" class="inline-block border-2 justify-center font-medium rounded-full p-2 hover:underline">See my experience →</a>
+  </HomeParagraph>
+  <span class="flex justify-end">
+    <a href="/resume" class="border-2 font-medium text-lg mt-6 rounded-full p-2 hover:underline">See my experience →</a>
+  </span>
 </NameAndPic>

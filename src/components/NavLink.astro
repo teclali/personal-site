@@ -1,0 +1,5 @@
+---
+const pathStart = Astro.url.pathname.split("/")[1];
+const {linkPath} = Astro.props
+---
+<span><a href={"/" + linkPath} class:list={[pathStart == linkPath && "underline underline-offset-4 font-medium", "hover:font-medium"]}><slot /></a></span>

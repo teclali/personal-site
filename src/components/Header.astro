@@ -1,9 +1,11 @@
 ---
 import "@/styles/global.css";
+import NavLink from "./NavLink.astro";
 ---
-<header class="flex justify-evenly mt-4 mb-4">
-  <span><a href="/about">about</a></span>
-  <span><a href="/resume">resume</a></span>
+<header class="flex justify-evenly my-4 mx-auto max-w-xl">
+  <NavLink linkPath="about">about</NavLink>
+  <NavLink linkPath="resume">resume</NavLink>
+  <NavLink linkPath="hobbies">hobbies</NavLink>
   <!-- <span><a href="/blog">blog</a></span> -->
   <!-- <span><a href="/contact">contact</a></span> -->
 </header>
