@@ -1,6 +1,56 @@
 ---
 import BasePage from "@/layouts/BasePage.astro"
+import Job from "@/components/Job.astro"
+import Project from "@/components/Project.astro"
+import { resumeData } from "@/data/resume"
+
+const { profile, jobs, projects } = resumeData;
 ---
 <BasePage>
-  <p class="max-w-lg mt-40 mx-auto text-lg">This is a current work in progress, please come back August 31, 2026 for filled out details</p>
+  <main class="mx-auto max-w-5xl px-6 py-14 text-fg sm:px-10 lg:py-20">
+    <header class="border-b border-border pb-10">
+      <p class="text-sm font-semibold uppercase tracking-[0.24em] text-secondary">Resume</p>
+      <div class="mt-4 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1 class="font-hero text-6xl leading-none text-primary sm:text-7xl">{profile.name}</h1>
+          <p class="mt-3 text-xl font-medium text-muted">{profile.title}</p>
+        </div>
+        <nav aria-label="Contact links" class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+          {profile.links.map((link) => (
+            <a
+              href={link.href}
+              class="text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary"
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+      <p class="mt-8 max-w-3xl text-base leading-7 text-muted sm:text-lg">{profile.summary}</p>
+    </header>
+
+    <div class="mt-12 grid gap-14 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.85fr)] lg:gap-16">
+      <section aria-labelledby="experience-heading">
+        <div class="mb-7 flex items-baseline justify-between gap-4">
+          <h2 id="experience-heading" class="font-hero text-4xl text-primary">Experience</h2>
+          <span class="text-xs uppercase tracking-[0.18em] text-muted">{jobs.length} role{jobs.length === 1 ? "" : "s"}</span>
+        </div>
+        <div class="space-y-10">
+          {jobs.map((job) => <Job job={job} />)}
+        </div>
+      </section>
+
+      <section aria-labelledby="projects-heading">
+        <div class="mb-7 flex items-baseline justify-between gap-4">
+          <h2 id="projects-heading" class="font-hero text-4xl text-primary">Projects</h2>
+          <span class="text-xs uppercase tracking-[0.18em] text-muted">{projects.length} project{projects.length === 1 ? "" : "s"}</span>
+        </div>
+        <div class="space-y-4">
+          {projects.map((project) => <Project project={project} />)}
+        </div>
+      </section>
+    </div>
+  </main>
 </BasePage>
