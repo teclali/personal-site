@@ -36,166 +36,68 @@ const photos = [
 ---
 
 <BasePage>
-  <main class="hobbies-page">
-    <section class="hobby-orbit" aria-labelledby="hobbies-heading">
-      <div class="hobby-copy">
-        <!-- <h1 id="hobbies-heading">Hobbies</h1> -->
-        <p class="mt-40">
+  <main class="px-5 pb-10 pt-12 text-fg lg:pt-24">
+    <section
+      class="mx-auto grid max-w-[74rem] grid-cols-1 justify-items-center gap-8 lg:grid-cols-[minmax(12.5rem,16.25rem)_minmax(20rem,32rem)_minmax(12.5rem,16.25rem)] lg:grid-rows-[auto_auto_auto] lg:items-center lg:gap-x-9 lg:gap-y-8"
+      aria-labelledby="hobbies-heading"
+    >
+      <div class="max-w-[34rem] text-center lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
+        <h1 id="hobbies-heading" class="sr-only">Hobbies</h1>
+        <p class="mt-40 text-lg leading-7">
           My current hobbies are learning Portuguese, biking, 3D-printing, and
           working on my home server.
         </p>
-        <p>
-          But I'm also passionate about many things stretching from multiplayer
-          video games to good urban design to geothermal greenhouses used to
-          raise growing zones, and love to talk about all of them.
+        <p class="mt-6 text-lg leading-7">
+          But I'm also passionate and love to talk about many things stretching all the way from multiplayer video games to good urban design to geothermal greenhouses used to raise growing zones.
         </p>
       </div>
 
       {
         photos.map((photo) => (
-          <figure class={`hobby-image ${photo.position}`}>
+          <figure
+            class:list={[
+              "w-[clamp(12.5rem,72vw,16.25rem)]",
+              photo.position === "left-top" &&
+                "lg:col-start-1 lg:row-start-1 lg:translate-x-6 lg:-translate-y-8",
+              photo.position === "left-bottom" &&
+                "lg:col-start-1 lg:row-start-2 lg:-translate-x-3 lg:translate-y-2",
+              photo.position === "right-top" &&
+                "lg:col-start-3 lg:row-start-1 lg:-translate-x-6 lg:-translate-y-8",
+              photo.position === "right-bottom" &&
+                "lg:col-start-3 lg:row-start-2 lg:translate-x-3 lg:translate-y-2",
+            ]}
+          >
             <Image
               src={photo.src}
               width={260}
               alt={photo.alt}
               loading="lazy"
+              class:list={[
+                "block aspect-[4/3] h-[12.1875rem] w-full rounded-xl border border-border object-cover shadow-[0_0.75rem_1.5rem_color-mix(in_srgb,var(--c-fg)_14%,transparent)]",
+                photo.position === "right-top" && "object-[center_top]",
+              ]}
             />
-            <figcaption>{photo.caption}</figcaption>
+            <figcaption class="pt-2.5 text-center text-muted italic">
+              {photo.caption}
+            </figcaption>
           </figure>
         ))
       }
 
-      <figure class="hobby-image nixos-logo">
+      <figure
+        class="w-[clamp(12.5rem,72vw,16.25rem)] lg:col-start-2 lg:row-start-3 lg:w-60 lg:-translate-y-2"
+      >
         <Image
           src={nixosLogo}
           width={240}
           alt="NixOS logo"
           loading="lazy"
+          class="block aspect-[4/3] h-[12.1875rem] w-full rounded-xl border border-border bg-[#eeeeee] object-contain p-4 shadow-[0_0.75rem_1.5rem_color-mix(in_srgb,var(--c-fg)_14%,transparent)]"
         />
-        <figcaption>The OS I'm using for my home server</figcaption>
+        <figcaption class="pt-2.5 text-center text-muted italic">
+          The OS I'm using for my home server :)
+        </figcaption>
       </figure>
     </section>
   </main>
 </BasePage>
-
-<style>
-  .hobbies-page {
-    color: var(--c-fg);
-    padding: 3rem 1.25rem 5rem;
-  }
-
-  .hobby-orbit {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    justify-items: center;
-    gap: 2rem;
-    max-width: 74rem;
-    margin: 0 auto;
-  }
-
-  .hobby-copy {
-    max-width: 34rem;
-    text-align: center;
-  }
-
-  h1 {
-    margin-bottom: 1.5rem;
-    color: var(--c-primary);
-    font-family: var(--font-hero);
-    font-size: clamp(3rem, 8vw, 4.5rem);
-    line-height: 0.9;
-  }
-
-  p {
-    font-size: 1.125rem;
-    line-height: 1.7;
-  }
-
-  p + p {
-    margin-top: 1.5rem;
-  }
-
-  .hobby-image {
-    width: clamp(12.5rem, 72vw, 16.25rem);
-    margin: 0;
-  }
-
-  .hobby-image :global(img) {
-    display: block;
-    width: 100%;
-    height: 12.1875rem;
-    aspect-ratio: 4 / 3;
-    border: 1px solid var(--c-border);
-    border-radius: 0.75rem;
-    object-fit: cover;
-    box-shadow: 0 0.75rem 1.5rem color-mix(in srgb, var(--c-fg) 14%, transparent);
-  }
-
-  .right-top :global(img) {
-    object-position: center top;
-  }
-
-  .hobby-image figcaption {
-    padding-top: 0.65rem;
-    color: var(--c-muted);
-    font-size: 0.9rem;
-    text-align: center;
-  }
-
-  .nixos-logo :global(img) {
-    background: #eeeeee;
-    object-fit: contain;
-    padding: 1rem;
-  }
-
-  @media (min-width: 56rem) {
-    .hobbies-page {
-      padding-top: 6rem;
-    }
-
-    .hobby-orbit {
-      grid-template-columns: minmax(12.5rem, 16.25rem) minmax(20rem, 32rem) minmax(12.5rem, 16.25rem);
-      grid-template-rows: repeat(2, auto) auto;
-      column-gap: 2.25rem;
-      row-gap: 2rem;
-      align-items: center;
-    }
-
-    .hobby-copy {
-      grid-column: 2;
-      grid-row: 1 / span 2;
-      align-self: center;
-    }
-
-    .left-top {
-      grid-column: 1;
-      grid-row: 1;
-      transform: translate(1.5rem, -2rem);
-    }
-
-    .left-bottom {
-      grid-column: 1;
-      grid-row: 2;
-      transform: translate(-0.75rem, 0.5rem);
-    }
-
-    .right-top {
-      grid-column: 3;
-      grid-row: 1;
-      transform: translate(-1.5rem, -2rem);
-    }
-
-    .right-bottom {
-      grid-column: 3;
-      grid-row: 2;
-      transform: translate(0.75rem, 0.5rem);
-    }
-
-    .nixos-logo {
-      grid-column: 2;
-      grid-row: 3;
-      width: 15rem;
-      transform: translateY(-0.5rem);
-    }
-  }
-</style>
