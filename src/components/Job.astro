@@ -1,4 +1,38 @@
 ---
+import type { Job as JobData } from "@/data/resume";
+import Project from "@/components/Project.astro";
 
+interface Props {
+  job: JobData;
+}
+
+const { job } = Astro.props;
 ---
-<slot />
+
+<article
+  id={job.id}
+  data-job-section={job.id}
+  x-show={`hasMatchingProject('${job.id}')`}
+  x-intersect:enter={`setJobVisibility('${job.id}', true)`}
+  x-intersect:leave={`setJobVisibility('${job.id}', false)`}
+  class="scroll-mt-8 border-t pt-6 first:border-t-0 first:pt-0"
+>
+  <header class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+    <div>
+      <p class="font-serif text-lg font-bold tracking-tight text-fg">{job.company}</p>
+      <h3 class="mt-0.5 font-serif text-lg italic leading-snug text-fg">{job.role}</h3>
+    </div>
+    <div class="shrink-0 font-serif text-base italic leading-snug text-muted sm:text-right">
+      {job.location && <p>{job.location}</p>}
+      <p>{job.startDate} – {job.endDate}</p>
+    </div>
+  </header>
+
+  <div class="mt-5 space-y-4 sm:pl-7">
+    {job.projects.map((project) => (
+      <div id={project.id} data-project data-technologies={project.technologies.join("|")} x-show="matchesProject($el.dataset.technologies)" class="scroll-mt-8">
+        <Project project={project} />
+      </div>
+    ))}
+  </div>
+</article>

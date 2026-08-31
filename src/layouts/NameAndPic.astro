@@ -4,12 +4,12 @@ import portrait from '../assets/casey_strong_portrait_2.jpg';
 import BasePage from './BasePage.astro';
 ---
 <BasePage>
-  <main class="grid grid-cols-1 gap-8 px-6 py-8 md:grid-cols-3 max-w-2xl m-auto mt-16">
-    <div class="flex justify-center">
-      <Image src={portrait} width="200" height="300" alt="Portrait of Casey Strong" class="rounded-lg w-full h-auto object-contain self-start"></Image>
+  <main class="grid grid-cols-1 md:gap-8 px-6 py-8 md:grid-cols-3 max-w-2xl m-auto mt-16">
+    <div class="flex justify-center m-auto md:m-0">
+      <Image src={portrait} width="200" height="300" alt="Portrait of Casey Strong" class="rounded-lg w-[200px] h-[300px] object-cover self-start"></Image>
     </div>
     <div class="h-full justify-center col-span-2 text-center md:text-left">
-      <h2 class="text-5xl text-gray-700 font-medium text-nowrap mb-8 mt-4">Casey Strong</h2>
+      <h2 class="text-4xl sm:text-5xl text-primary font-medium wrap-break-word mb-8 mt-4">Casey Strong</h2>
       <slot />
     </div>
   </main>
