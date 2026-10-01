@@ -1,5 +1,6 @@
 ---
 import BasePage from "../BasePage.astro";
+import PageHeader from "@/components/PageHeader.astro";
 const { frontmatter } = Astro.props;
 const datePublished = new Date(frontmatter.date_published);
 const formattedDate = datePublished.toLocaleDateString("en-US", {
@@ -9,11 +10,12 @@ const formattedDate = datePublished.toLocaleDateString("en-US", {
 })
 ---
 <BasePage>
-  <div class="max-w-xl mx-auto px-8 mb-8">
-    <h1 class="mb-4 mt-10 md:mt-24 text-4xl font-bold">{frontmatter.title}</h1>
-    <time class="" datetime={frontmatter.date_published}>{formattedDate}</time>
+  <div class="mx-auto max-w-xl px-8">
+    <PageHeader title={frontmatter.title} class="text-left">
+      <time class="mt-4 block" datetime={frontmatter.date_published}>{formattedDate}</time>
+    </PageHeader>
   </div>
-  <main class="max-w-xl px-8 m-auto *:mb-8 text-xl">
+  <main class="m-auto max-w-xl px-8 text-xl *:mb-8">
     <slot />
   </main>
 </BasePage>

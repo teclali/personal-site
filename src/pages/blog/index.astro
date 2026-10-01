@@ -1,14 +1,15 @@
 ---
 import "@/styles/global.css";
 import BasePage from "@/layouts/BasePage.astro"
+import PageHeader from "@/components/PageHeader.astro";
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+
 ---
 <BasePage>
-  <ul>
-      <li>Why you should care about the bronze age collapse as a programmer(losing the ability to do things(geopolitics with manufacturing and junior engineers))</li>
-      <li><a href="/blog/2026-08-17-why-a-nixos-homeserver-changed-my-mind-on-ai">How a NixOs home server changed my mind on AI</a></li>
-      <li><a href="/blog/2026-08-23-software-engineering-is-still-the-best-job"></a>
-          Why software engineering is still the best profession in 2026 (Why I got
-          into programming)
-      </li>
-  </ul>
+  <main class="mx-auto max-w-2xl px-5 text-fg">
+    <PageHeader title="Blog" id="blog-heading" />
+    <ul>
+      {allPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title} - {post.frontmatter.pubDate}</a></li>)}
+    </ul>
+  </main>
 </BasePage>

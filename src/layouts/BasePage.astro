@@ -1,5 +1,5 @@
 ---
-import Header from "@/components/Header.astro"
+import NavBar from "@/components/NavBar.astro"
 ---
 <html lang="en">
   <head>
@@ -21,7 +21,9 @@ import Header from "@/components/Header.astro"
     <title>Casey Strong's Personal Site</title>
   </head>
   <body class="bg-bg">
-    <Header />
-    <slot />
+    <NavBar />
+    <div class="pt-12">
+      <slot />
+    </div>
   </body>
 </html>

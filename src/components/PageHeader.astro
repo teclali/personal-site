@@ -1,0 +1,14 @@
+---
+interface Props {
+  title: string;
+  id?: string;
+  class?: string;
+}
+
+const { title, id, class: className } = Astro.props;
+---
+
+<header class:list={["mb-12 text-center", className]} aria-labelledby={id}>
+  <h1 id={id} class="text-4xl font-medium text-primary sm:text-5xl">{title}</h1>
+  <slot />
+</header>
